@@ -37,12 +37,20 @@ namespace nothinbutdotnetprep.collections
 
         public IEnumerable<Movie> all_movies_published_by_pixar()
         {
-            throw new NotImplementedException();
+            foreach (Movie movie in list_of_movies)
+            {
+                if (movie.production_studio == ProductionStudio.Pixar)
+                    yield return movie;
+            }
         }
 
         public IEnumerable<Movie> all_movies_published_by_pixar_or_disney()
         {
-            throw new NotImplementedException();
+            foreach (Movie movie in list_of_movies)
+            {
+                if (movie.production_studio == ProductionStudio.Pixar || movie.production_studio == ProductionStudio.Disney)
+                    yield return movie;
+            }
         }
 
         public IEnumerable<Movie> sort_all_movies_by_title_ascending()
@@ -57,27 +65,41 @@ namespace nothinbutdotnetprep.collections
 
         public IEnumerable<Movie> all_movies_not_published_by_pixar()
         {
-            throw new NotImplementedException();
+            foreach (Movie movie in list_of_movies)
+            {
+                if (movie.production_studio != ProductionStudio.Pixar)
+                    yield return movie;
+            }
         }
 
         public IEnumerable<Movie> all_movies_published_after(int year)
         {
-            throw new NotImplementedException();
+            foreach (Movie movie in list_of_movies)
+            {
+                if (movie.date_published.Year > year)
+                    yield return movie;
+            }
         }
 
         public IEnumerable<Movie> all_movies_published_between_years(int startingYear, int endingYear)
         {
-            throw new NotImplementedException();
+            foreach (Movie movie in list_of_movies)
+                if (movie.date_published.Year >= startingYear && movie.date_published.Year <= endingYear)
+                    yield return movie;
         }
 
         public IEnumerable<Movie> all_kid_movies()
         {
-            throw new NotImplementedException();
+            foreach (Movie movie in list_of_movies)
+                if (movie.genre == Genre.kids)
+                    yield return movie;
         }
 
         public IEnumerable<Movie> all_action_movies()
         {
-            throw new NotImplementedException();
+            foreach (Movie movie in list_of_movies)
+                if (movie.genre == Genre.action)
+                    yield return movie;
         }
 
         public IEnumerable<Movie> sort_all_movies_by_date_published_descending()
