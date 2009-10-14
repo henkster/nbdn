@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace nothinbutdotnetprep.infrastructure.extensions
 {
@@ -19,6 +18,15 @@ namespace nothinbutdotnetprep.infrastructure.extensions
         public static IEnumerable<int> to(this int start, int end)
         {
             for (var i = start; i <= end; i++) yield return i;
+        }
+
+        public static IEnumerable<T> that_match<T>(this IEnumerable<T> items, Predicate<T> predicate)
+        {
+            foreach (var item in items)
+            {
+                if (predicate(item))
+                    yield return item;
+            }
         }
     }
 }
